@@ -1,0 +1,19 @@
+{
+  "name": "wild-surge",
+  "version": "1.0.0",
+  "description": "This is my 1st JS project.  It's purpose is to display a random surge from the d10,000 list with rolls autofilled.",
+  "main": "surgeroller.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avesky/Wild-Surge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avesky/Wild-Surge/issues"
+  },
+  "homepage": "https://github.com/avesky/Wild-Surge#readme",
+  "scripts": {
+    "surge":"node surgeroller.js"
+  }
+}
