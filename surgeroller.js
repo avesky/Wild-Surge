@@ -1,28 +1,21 @@
 const surgeArray = require('./clean.json');
+const Chance = require('chance');
 
-const surgePick = Math.floor(Math.random() * surgeArray.length);
+const chance = new Chance();
+const surgePick =  6424//chance.natural({max: surgeArray.length - 1 });
+const regex = /(\d+d\d+)(\+\d+)?/g;
 
-//const dieToRoll =
-const regexDie = /d([0-9]+)/;
-const regexNumDie = /([0-9]+)d/;
-const regexTotal = /[0-9]+d[0-9]+/;
+console.log(
+	surgePick,
+	surgeArray[surgePick].replace(
+		regex,
+		(_,c1,c2) => {
+			const roll =chance.rpg(c1, {sum: true});
+			const add = c2 ? Number(c2) : 0;
 
-const dieToRoll = regexDie.exec(surgeArray[surgePick]);
-const numDie = regexNumDie.exec(surgeArray[surgePick]);
-const dieReplace = regexTotal.exec(surgeArray[surgePick]);
+			console.log({roll,add})
 
-function rollDie() {
-	return Math.floor(Math.random() * dieToRoll[1]) + 1;
-}
-const dieToSum = [];
-dieTotal = 0;
-if (numDie && dieToRoll) {
-	for (let i = 0; i < numDie[1]; i++) {
-		dieToSum.push(rollDie());
-	}
-	for (let i = 0; i < dieToSum.length; i++) {
-		dieTotal += dieToSum[i];
-	}
-}
-
-console.log(surgePick, surgeArray[surgePick].replace(dieReplace, dieTotal));
+			return roll + add;
+		}
+	)
+);
